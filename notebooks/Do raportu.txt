@@ -1,0 +1,4 @@
+Co musi byc na 100%
+
+Podsumujemy liczbę osób na każdym poziomie zaawansowania dla poszczególnych umiejętności.
+Zidentyfikujemy, które umiejętności są najczęściej oceniane na poziomie mentor (4) oraz które mają najwięcej zainteresowanych (2).
