@@ -4,3 +4,4 @@ __pycache__
 .telemetry
 session_store.db
 stats.json
+conf/local/credentials.yml
