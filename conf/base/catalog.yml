@@ -1,0 +1,12 @@
+raw_survey:
+  type: pandas.ExcelDataset
+  filepath: data/01_Raw/01_DataCompetencySurvey.xlsx
+
+processed_survey:
+  type: pandas.ParquetDataset
+  filepath: data/02_Interim/01_DataCompetencySurvey.pq
+
+missing_value_heatmap_plot:
+  type: matplotlib.MatplotlibWriter
+  filepath: figures/missing_values.png
+  versioned: false
