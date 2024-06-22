@@ -6,18 +6,19 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 
-def _add_participation_detail_to_df(survey: pd.DataFrame) -> pd.DataFrame:
+def add_participation_detail_to_df(survey: pd.DataFrame) -> pd.DataFrame:
+    participation_column_name = "Participation Type"
     survey.insert(1, "Participant", "")
     survey.insert(1, "Organizer", "")
     survey.insert(1, "Consumer", "")
     survey["Participant"] = np.where(
         (
-            survey["W jaki sposób chcesz uczestniczyć w Community?"]
+            survey[participation_column_name]
             == "Chcę uczestniczyć w projekcie data"
         )
         |
         (
-            survey["W jaki sposób chcesz uczestniczyć w Community?"]
+            survey[participation_column_name]
             == 'Chcę uczestniczyć w projekcie data i organizować "życie" Community'
         ),
         1,
@@ -25,30 +26,29 @@ def _add_participation_detail_to_df(survey: pd.DataFrame) -> pd.DataFrame:
     )
     survey["Organizer"] = np.where(
         (
-            survey["W jaki sposób chcesz uczestniczyć w Community?"]
-            == 'Chcę organizować "życie" Community'
+            survey[participation_column_name] == 'Chcę organizować "życie" Community'
         )
         |
         (
-            survey["W jaki sposób chcesz uczestniczyć w Community?"]
+            survey[participation_column_name]
             == 'Chcę uczestniczyć w projekcie data i organizować "życie" Community'
         ),
         1,
         0,
     )
     survey["Consumer"] = np.where(
-        survey["W jaki sposób chcesz uczestniczyć w Community?"]
+        survey[participation_column_name]
         == 'Póki co chcę czerpać, obserwować, "konsumować content"',
         1,
         0,
     )
     survey = survey.drop(
-        columns=["W jaki sposób chcesz uczestniczyć w Community?"]
+        columns=[participation_column_name]
     )
     return survey
 
 
-def _rename_columns(survey: pd.DataFrame) -> pd.DataFrame:
+def rename_columns(survey: pd.DataFrame) -> pd.DataFrame:
     survey = survey.rename(
         columns={
             "Godzina rozpoczęcia": "Survey start time",
@@ -84,7 +84,7 @@ def _rename_columns(survey: pd.DataFrame) -> pd.DataFrame:
             "Nawiązywanie Relacji z naukowcami": "Naw. Rel. z nauk.",
             "Pozyskiwanie finansowania": "Pozysk. Finans.",
             "Współpraca z administracją UEW": "Wsp. z adm. UEW",
-            "Jeżeli jest obszar, na którym się znasz i chcesz go wykorzystać, dopisz go:": "Dodatkowy obszar",
+            "Jeżeli jest obszar, na którym się znasz i chcesz go wykorzystać, dopisz go:": "Interests",
             "FinTech": "FinTech",
             "HealthTech": "HealthTech",
             "FashionTech": "FashionTech",
@@ -94,32 +94,25 @@ def _rename_columns(survey: pd.DataFrame) -> pd.DataFrame:
             "PropTech (nieruchomości)": "PropTech",
             "Cybersecurity": "Cybersecurity",
             "HR": "HR",
-            "Jeżeli pominięto branżę, na której się znasz dopisz ją:": "Dodatkowe Branży",
+            "Jeżeli pominięto branżę, na której się znasz dopisz ją:": "Additional Tech",
         }
     )
     return survey
 
 
-def _drop_columns(survey: pd.DataFrame) -> pd.DataFrame:
+def drop_columns(survey: pd.DataFrame) -> pd.DataFrame:
     survey = survey.drop(
         columns=[
-            "Twój pomysł",
-            "Zainteresowania",
-            "Dodatkowe Branży",
-            "Godzina rozpoczęcia",
-            "Godzina ukończenia",
-            "Adres e-mail",
-            "Nazwa",
-            "Czas ostatniej modyfikacji",
+            "Survey start time",
+            "Survey end time",
+            "Email",
+            "Name",
+            "Survey last modify time",
+            "Your idea",
+            "Interests",
+            "Additional Tech",
         ]
     )
-    return survey
-
-
-def preprocess_survey(survey: pd.DataFrame) -> pd.DataFrame:
-    survey = _add_participation_detail_to_df(survey)
-    survey = _rename_columns(survey)
-    # survey = _drop_columns(survey)
     return survey
 
 

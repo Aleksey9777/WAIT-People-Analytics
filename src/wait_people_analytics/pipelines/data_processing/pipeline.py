@@ -1,20 +1,39 @@
 from kedro.pipeline import Pipeline, node, pipeline
 
-from .nodes import preprocess_survey, generate_missing_value_heatmap
+from .nodes import (
+    generate_missing_value_heatmap,
+    rename_columns,
+    add_participation_detail_to_df,
+    drop_columns,
+)
 
 
 def create_pipeline(**kwargs) -> Pipeline:
     return pipeline(
         [
             node(
-                func=preprocess_survey,
+                func=rename_columns,
                 inputs="raw_survey",
+                outputs="renamed_raw_survey",
+                name="rename_columns",
+            ),
+            node(
+                func=add_participation_detail_to_df,
+                inputs="renamed_raw_survey",
+                outputs="changed_participation_detail",
+                name="add_participation_detail_to_df",
+            ),
+            node(
+                func=drop_columns,
+                inputs="changed_participation_detail",
                 outputs="processed_survey",
+                name="drop_columns",
             ),
             node(
                 func=generate_missing_value_heatmap,
-                inputs="raw_survey",
+                inputs="renamed_raw_survey",
                 outputs="missing_value_heatmap_plot",
+                name="generate_missing_value_heatmap",
             ),
         ]
     )
