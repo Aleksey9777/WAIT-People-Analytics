@@ -18,6 +18,12 @@ def create_pipeline(**kwargs) -> Pipeline:
                 name="rename_columns",
             ),
             node(
+                func=generate_missing_value_heatmap,
+                inputs="renamed_raw_survey",
+                outputs="missing_value_heatmap_plot",
+                name="generate_missing_value_heatmap",
+            ),
+            node(
                 func=add_participation_detail_to_df,
                 inputs="renamed_raw_survey",
                 outputs="changed_participation_detail",
@@ -28,12 +34,6 @@ def create_pipeline(**kwargs) -> Pipeline:
                 inputs="changed_participation_detail",
                 outputs="processed_survey",
                 name="drop_columns",
-            ),
-            node(
-                func=generate_missing_value_heatmap,
-                inputs="renamed_raw_survey",
-                outputs="missing_value_heatmap_plot",
-                name="generate_missing_value_heatmap",
             ),
         ]
     )
