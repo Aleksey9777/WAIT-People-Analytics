@@ -6,7 +6,20 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 
-def add_participation_detail_to_df(survey: pd.DataFrame) -> pd.DataFrame:
+def change_participation_detail_to_df(survey: pd.DataFrame) -> pd.DataFrame:
+    """Decouple 'Participation Type' into 3 different categories:
+    Participant, Organizer, Consumer
+
+    Mapping:
+    Chcę uczestniczyć w projekcie data - Participant
+    Chcę uczestniczyć w projekcie data i organizować "życie" Community - Participant and Organizer
+    Póki co chcę czerpać, obserwować, "konsumować content - Consumer
+
+    Args:
+        survey: raw dataframe.
+    Returns:
+        dataframe with changed columns
+    """
     participation_column_name = "Participation Type"
     survey.insert(1, "Participant", "")
     survey.insert(1, "Organizer", "")
@@ -49,6 +62,13 @@ def add_participation_detail_to_df(survey: pd.DataFrame) -> pd.DataFrame:
 
 
 def rename_columns(survey: pd.DataFrame) -> pd.DataFrame:
+    """Rename all columns in survey dataframe columns to shorter english equivalents.
+
+    Args:
+        survey: raw dataframe.
+    Returns:
+        dataframe with renamed columns
+    """
     survey = survey.rename(
         columns={
             "Godzina rozpoczęcia": "Survey start time",
@@ -101,6 +121,13 @@ def rename_columns(survey: pd.DataFrame) -> pd.DataFrame:
 
 
 def drop_columns(survey: pd.DataFrame) -> pd.DataFrame:
+    """Drop columns with no value for model
+
+    Args:
+        survey: dataframe.
+    Returns:
+        dataframe without specific columns
+    """
     survey = survey.drop(
         columns=[
             "Survey start time",
@@ -117,6 +144,13 @@ def drop_columns(survey: pd.DataFrame) -> pd.DataFrame:
 
 
 def generate_missing_value_heatmap(df: pd.DataFrame) -> Any:
+    """Generate missing value heatmap
+
+    Args:
+        df: dataframe.
+    Returns:
+        Matplotlib plit
+    """
     plt.figure(figsize=(10, 4))
     sns.heatmap(df.isnull(), cbar=False, cmap="YlGnBu")
     plt.title("Heatmap of Missing Values")

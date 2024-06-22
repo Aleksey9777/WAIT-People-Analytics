@@ -3,7 +3,7 @@ from kedro.pipeline import Pipeline, node, pipeline
 from .nodes import (
     generate_missing_value_heatmap,
     rename_columns,
-    add_participation_detail_to_df,
+    change_participation_detail_to_df,
     drop_columns,
 )
 
@@ -24,7 +24,7 @@ def create_pipeline(**kwargs) -> Pipeline:
                 name="generate_missing_value_heatmap",
             ),
             node(
-                func=add_participation_detail_to_df,
+                func=change_participation_detail_to_df,
                 inputs="renamed_raw_survey",
                 outputs="changed_participation_detail",
                 name="add_participation_detail_to_df",
