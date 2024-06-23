@@ -209,14 +209,19 @@ jupyterlab-server==2.27.2
 kedro==0.19.6
     # via
     #   -r requirements.in
+    #   kedro-datasets
     #   kedro-telemetry
     #   kedro-viz
+kedro-datasets==3.0.1
+    # via -r requirements.in
 kedro-telemetry==0.4.0
     # via -r requirements.in
 kedro-viz==9.1.0
     # via -r requirements.in
 kiwisolver==1.4.5
     # via matplotlib
+lazy-loader==0.4
+    # via kedro-datasets
 markdown-it-py==3.0.0
     # via rich
 markupsafe==2.1.5
@@ -262,6 +267,7 @@ numpy==1.26.4
     #   contourpy
     #   matplotlib
     #   pandas
+    #   pyarrow
     #   scikit-learn
     #   scipy
     #   seaborn
@@ -283,6 +289,7 @@ packaging==23.2
     #   jupyterlab
     #   jupyterlab-server
     #   kedro-viz
+    #   lazy-loader
     #   matplotlib
     #   nbconvert
     #   plotly
@@ -324,6 +331,8 @@ ptyprocess==0.7.0
     #   terminado
 pure-eval==0.2.2
     # via stack-data
+pyarrow==16.1.0
+    # via -r requirements.in
 pycparser==2.22
     # via cffi
 pydantic==2.7.4
