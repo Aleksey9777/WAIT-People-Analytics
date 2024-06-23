@@ -5,6 +5,13 @@ raw_survey:
     kedro-viz:
       layer: raw
 
+renamed_raw_survey:
+  type: pandas.ExcelDataset
+  filepath: data/01_Raw/01_DataCompetencySurvey.xlsx
+  metadata:
+    kedro-viz:
+      layer: raw
+
 missing_value_heatmap_plot:
   type: matplotlib.MatplotlibWriter
   filepath: figures/missing_values.png
@@ -20,9 +27,9 @@ processed_survey:
     kedro-viz:
       layer: preprocessing
 
-filter_project_participants_data:
+numeric_df:
   type: pandas.CSVDataset
-  filepath: data/02_Interim/filter_project_participants_data.csv
+  filepath: data/02_Interim/numeric_df.csv
   metadata:
     kedro-viz:
       layer: preprocessing

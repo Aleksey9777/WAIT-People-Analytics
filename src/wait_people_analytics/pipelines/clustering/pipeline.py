@@ -10,7 +10,7 @@ def create_pipeline(**kwargs) -> Pipeline:
         [
             node(
                 func=generate_hierarchical_clustering_visual,
-                inputs="filter_project_participants_data",
+                inputs="processed_survey",
                 outputs="hierarchical_clustering_visual",
                 name="generate_hierarchical_clustering_visual",
             )
