@@ -19,3 +19,8 @@ corr_matrix_visual:
 filter_project_participants_data:
   type: pandas.CSVDataset
   filepath: data/02_Interim/filter_project_participants_data.csv
+
+hierarchical_clustering_visual:
+  type: matplotlib.MatplotlibWriter
+  filepath: figures/hierarchical_clustering_visual.png
+  versioned: false

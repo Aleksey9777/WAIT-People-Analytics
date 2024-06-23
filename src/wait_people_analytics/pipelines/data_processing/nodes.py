@@ -138,6 +138,15 @@ def drop_columns(survey: pd.DataFrame) -> pd.DataFrame:
             "Your idea",
             "Interests",
             "Additional Tech",
+            "FinTech",
+            "HealthTech",
+            "FashionTech",
+            "ECommerce",
+            "SportTech",
+            "NonProfit",
+            "PropTech",
+            "Cybersecurity",
+            "HR",
         ]
     )
     return survey
