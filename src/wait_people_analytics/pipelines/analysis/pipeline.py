@@ -11,7 +11,17 @@ from .nodes import (
 
 def create_pipeline(**kwargs) -> Pipeline:
     return pipeline(
-        [
+        namespace="data_analysis",
+        inputs={"filter_project_participants_data"},
+        parameters={"analytics_legend_mapping"},
+        outputs={
+            "corr_matrix_visual",
+            "overall_stackedbar_visual",
+            "top_interested_stackedbar_visual",
+            "top_not_interested_stackedbar_visual",
+            "top_unconscious_stackedbar_visual",
+        },
+        pipe=[
             node(
                 func=generate_corr_matrix_visual,
                 inputs="filter_project_participants_data",
