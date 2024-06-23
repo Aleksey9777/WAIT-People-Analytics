@@ -11,6 +11,33 @@ missing_value_heatmap_plot:
   filepath: figures/missing_values.png
   versioned: false
 
+hierarchical_clustering_visual:
+  type: matplotlib.MatplotlibWriter
+  filepath: figures/hierarchical_clustering_visual.png
+  versioned: false
+
+overall_stackedbar_visual:
+  type: matplotlib.MatplotlibWriter
+  filepath: figures/overall_stackedbar_visual.png
+  versioned: false
+
+top_interested_stackedbar_visual:
+  type: matplotlib.MatplotlibWriter
+  filepath: figures/top_interested_stackedbar_visual.png
+  versioned: false
+
+top_not_interested_stackedbar_visual:
+  type: matplotlib.MatplotlibWriter
+  filepath: figures/top_not_interested_stackedbar_visual.png
+  versioned: false
+
+top_unconscious_stackedbar_visual:
+  type: matplotlib.MatplotlibWriter
+  filepath: figures/top_unconscious_stackedbar_visual.png
+  versioned: false
+
+
+
 corr_matrix_visual:
   type: matplotlib.MatplotlibWriter
   filepath: figures/corrMatrix.png
@@ -19,8 +46,3 @@ corr_matrix_visual:
 filter_project_participants_data:
   type: pandas.CSVDataset
   filepath: data/02_Interim/filter_project_participants_data.csv
-
-hierarchical_clustering_visual:
-  type: matplotlib.MatplotlibWriter
-  filepath: figures/hierarchical_clustering_visual.png
-  versioned: false

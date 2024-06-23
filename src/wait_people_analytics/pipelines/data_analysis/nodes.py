@@ -30,3 +30,134 @@ def generate_corr_matrix_visual(df: pd.DataFrame) -> Any:
         center=0,
     )
     return plt
+
+def generate_overall_stackedbar_visual(df: pd.DataFrame) -> Any:
+    skill_values = list(range(5))
+    skill_counts = {value: [] for value in skill_values}
+
+    for col in df.columns[1:]:
+        for value in skill_values:
+            count = (df[col] == value).sum()
+            skill_counts[value].append(count)
+
+    count_df = pd.DataFrame(skill_counts, index=df.columns[1:])
+    count_df = count_df.sort_values(by=4, ascending=False)
+
+    plt.figure(figsize=(7, 2))
+    ax = count_df.plot(kind="bar", stacked=True, figsize=(20, 20))
+    plt.title("Count of People with Each Skill Value")
+    plt.xlabel("Skill")
+    plt.ylabel("Count")
+    plt.xticks(rotation=90)
+    legend_labels = ["Nieświadomy", "Niezainteresowany", "Zainteresowany", "Kompetentny", "Mentor"]
+    handles, labels = ax.get_legend_handles_labels()
+    # Tworzenie kolejności sortowania malejącego
+    sort_order = sorted(range(len(skill_values)), reverse=True)
+
+    # Sortowanie uchwytów i etykiet według nowej kolejności
+    sorted_handles = [handles[idx] for idx in sort_order]
+    sorted_labels = [legend_labels[idx] for idx in sort_order]
+
+    # Ustawienie posortowanej legendy
+    ax.legend(sorted_handles, sorted_labels, title="Skill Value", bbox_to_anchor=(1.05, 1), loc="upper left")
+        
+    return plt
+
+def generate_top_interested_stackedbar_visual(df: pd.DataFrame) -> Any:
+    skill_values = list(range(5))
+    skill_counts = {value: [] for value in skill_values}
+    legend_labels = ["Unconscious", "Not Interested", "Interested", "Competent", "Mentor"]  #to be changed to english
+
+    for col in df.columns[1:]:
+        for value in skill_values:
+            count = (df[col] == value).sum()
+            skill_counts[value].append(count)
+
+    count_df = pd.DataFrame(skill_counts, index=df.columns[1:])
+    count_df = count_df.sort_values(by=2, ascending=False) #add sorting variable
+    count_df = count_df.head(8) #topN variable
+    plt.figure(figsize=(10, 6))
+    ax = count_df.plot(kind="bar",stacked=True, figsize=(10, 6))
+    plt.title("Top by Count of Interested")
+    plt.xlabel("Skill")
+    plt.ylabel("Count")
+    plt.xticks(rotation=90)
+
+    handles, labels = ax.get_legend_handles_labels()
+    # Tworzenie kolejności sortowania malejącego
+    sort_order = sorted(range(len(skill_values)), reverse=True)
+
+    # Sortowanie uchwytów i etykiet według nowej kolejności
+    sorted_handles = [handles[idx] for idx in sort_order]
+    sorted_labels = [legend_labels[idx] for idx in sort_order]
+
+    # Ustawienie posortowanej legendy
+    ax.legend(sorted_handles, sorted_labels, title="Skill Value", bbox_to_anchor=(1.05, 1), loc="upper left")
+
+    return plt
+
+def generate_top_not_interested_stackedbar_visual(df: pd.DataFrame) -> Any:
+    skill_values = list(range(5))
+    skill_counts = {value: [] for value in skill_values}
+    legend_labels = ["Unconscious", "Not Interested", "Interested", "Competent", "Mentor"] #to be changed to english
+
+    for col in df.columns[1:]:
+        for value in skill_values:
+            count = (df[col] == value).sum()
+            skill_counts[value].append(count)
+
+    count_df = pd.DataFrame(skill_counts, index=df.columns[1:])
+    count_df = count_df.sort_values(by=1, ascending=False) #add sorting variable
+    count_df = count_df.head(8) #topN variable
+    plt.figure(figsize=(10, 6))
+    ax = count_df.plot(kind="bar",stacked=True, figsize=(10, 6))
+    plt.title("Top by Count of Not Interested")
+    plt.xlabel("Skill")
+    plt.ylabel("Count")
+    plt.xticks(rotation=90)
+
+    handles, labels = ax.get_legend_handles_labels()
+    # Tworzenie kolejności sortowania malejącego
+    sort_order = sorted(range(len(skill_values)), reverse=True)
+
+    # Sortowanie uchwytów i etykiet według nowej kolejności
+    sorted_handles = [handles[idx] for idx in sort_order]
+    sorted_labels = [legend_labels[idx] for idx in sort_order]
+
+    # Ustawienie posortowanej legendy
+    ax.legend(sorted_handles, sorted_labels, title="Skill Value", bbox_to_anchor=(1.05, 1), loc="upper left")
+
+    return plt
+
+def generate_top_unconscious_stackedbar_visual(df: pd.DataFrame) -> Any:
+    skill_values = list(range(5))
+    skill_counts = {value: [] for value in skill_values}
+    legend_labels = ["Unconscious", "Not Interested", "Interested", "Competent", "Mentor"] #to be changed to english
+
+    for col in df.columns[1:]:
+        for value in skill_values:
+            count = (df[col] == value).sum()
+            skill_counts[value].append(count)
+
+    count_df = pd.DataFrame(skill_counts, index=df.columns[1:])
+    count_df = count_df.sort_values(by=0, ascending=False) #add sorting variable
+    count_df = count_df.head(8) #topN variable
+    plt.figure(figsize=(10, 6))
+    ax = count_df.plot(kind="bar",stacked=True, figsize=(10, 6))
+    plt.title("Top by Count of Unconscious")
+    plt.xlabel("Skill")
+    plt.ylabel("Count")
+    plt.xticks(rotation=90)
+
+    handles, labels = ax.get_legend_handles_labels()
+    # Tworzenie kolejności sortowania malejącego
+    sort_order = sorted(range(len(skill_values)), reverse=True)
+
+    # Sortowanie uchwytów i etykiet według nowej kolejności
+    sorted_handles = [handles[idx] for idx in sort_order]
+    sorted_labels = [legend_labels[idx] for idx in sort_order]
+
+    # Ustawienie posortowanej legendy
+    ax.legend(sorted_handles, sorted_labels, title="Skill Value", bbox_to_anchor=(1.05, 1), loc="upper left")
+
+    return plt
