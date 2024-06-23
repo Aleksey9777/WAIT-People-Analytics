@@ -7,13 +7,16 @@ import seaborn as sns
 
 def filter_project_participants(df: pd.DataFrame) -> Any:
     df = df[df["Participant"] == 1]
+    df = df.drop(columns = ["Participant", "Organizer", "Consumer"])
     return df
 
 def generate_corr_matrix_visual(df: pd.DataFrame) -> Any:
+    df = df.copy()
+    df = df.drop(columns = ["ID"])
     numeric_df = df.select_dtypes(include=[np.number])
     corr_matrix = numeric_df.corr(method='spearman')
 
-    plt.figure(figsize=(25, 20))
+    plt.figure(figsize=(17, 14))
     mask = np.triu(np.ones_like(corr_matrix, dtype=bool))
 
     sns.heatmap(
