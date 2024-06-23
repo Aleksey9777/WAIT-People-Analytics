@@ -20,6 +20,13 @@ processed_survey:
     kedro-viz:
       layer: preprocessing
 
+filter_project_participants_data:
+  type: pandas.CSVDataset
+  filepath: data/02_Interim/filter_project_participants_data.csv
+  metadata:
+    kedro-viz:
+      layer: preprocessing
+
 overall_stackedbar_visual:
   type: matplotlib.MatplotlibWriter
   filepath: figures/overall_stackedbar_visual.png
@@ -59,13 +66,6 @@ corr_matrix_visual:
   metadata:
     kedro-viz:
       layer: analysis
-
-filter_project_participants_data:
-  type: pandas.CSVDataset
-  filepath: data/02_Interim/filter_project_participants_data.csv
-  metadata:
-    kedro-viz:
-      layer: preprocessing
 
 hierarchical_clustering_visual:
   type: matplotlib.MatplotlibWriter

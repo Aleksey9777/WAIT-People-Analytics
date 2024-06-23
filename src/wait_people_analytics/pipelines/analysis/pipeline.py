@@ -1,7 +1,6 @@
 from kedro.pipeline import Pipeline, node, pipeline
 
 from .nodes import (
-    filter_project_participants,
     generate_corr_matrix_visual,
     generate_overall_stackedbar_visual,
     generate_top_interested_stackedbar_visual,
@@ -13,12 +12,6 @@ from .nodes import (
 def create_pipeline(**kwargs) -> Pipeline:
     return pipeline(
         [
-            node(
-                func=filter_project_participants,
-                inputs="processed_survey",
-                outputs="filter_project_participants_data",
-                name="filter_project_participants",
-            ),
             node(
                 func=generate_corr_matrix_visual,
                 inputs="filter_project_participants_data",

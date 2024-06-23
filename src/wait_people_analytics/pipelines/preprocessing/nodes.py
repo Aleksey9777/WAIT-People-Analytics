@@ -164,3 +164,9 @@ def generate_missing_value_heatmap(df: pd.DataFrame) -> Any:
     sns.heatmap(df.isnull(), cbar=False, cmap="YlGnBu")
     plt.title("Heatmap of Missing Values")
     return plt
+
+
+def filter_project_participants(df: pd.DataFrame) -> Any:
+    df = df[df["Participant"] == 1]
+    df = df.drop(columns=["Participant", "Organizer", "Consumer"])
+    return df

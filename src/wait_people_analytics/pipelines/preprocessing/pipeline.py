@@ -5,6 +5,7 @@ from .nodes import (
     rename_columns,
     change_participation_detail_to_df,
     drop_columns,
+    filter_project_participants,
 )
 
 
@@ -34,6 +35,12 @@ def create_pipeline(**kwargs) -> Pipeline:
                 inputs="changed_participation_detail",
                 outputs="processed_survey",
                 name="drop_columns",
+            ),
+            node(
+                func=filter_project_participants,
+                inputs="processed_survey",
+                outputs="filter_project_participants_data",
+                name="filter_project_participants",
             ),
         ]
     )
