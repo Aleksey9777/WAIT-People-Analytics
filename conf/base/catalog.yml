@@ -65,7 +65,7 @@ filter_project_participants_data:
   filepath: data/02_Interim/filter_project_participants_data.csv
   metadata:
     kedro-viz:
-      layer: interim
+      layer: preprocessing
 
 hierarchical_clustering_visual:
   type: matplotlib.MatplotlibWriter
