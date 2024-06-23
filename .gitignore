@@ -5,3 +5,5 @@ __pycache__
 session_store.db
 stats.json
 conf/local/credentials.yml
+data/02_Interim/*
+data/03_Processed/*
