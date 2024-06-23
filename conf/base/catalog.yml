@@ -15,3 +15,7 @@ corr_matrix_visual:
   type: matplotlib.MatplotlibWriter
   filepath: figures/corrMatrix.png
   versioned: false
+
+filter_project_participants_data:
+  type: pandas.CSVDataset
+  filepath: data/02_Interim/filter_project_participants_data.csv
