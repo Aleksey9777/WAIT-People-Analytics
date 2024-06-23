@@ -1,0 +1,31 @@
+[build-system]
+requires = [ "setuptools",]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "wait_people_analytics"
+readme = "README.md"
+dynamic = [ "dependencies", "version",]
+
+[project.scripts]
+wait-people-analytics = "wait_people_analytics.__main__:main"
+
+[tool.kedro]
+package_name = "wait_people_analytics"
+project_name = "wait_people_analytics"
+kedro_init_version = "0.19.6"
+tools = [ "Kedro Viz",]
+example_pipeline = "True"
+source_dir = "src"
+
+[project.entry-points."kedro.hooks"]
+
+[tool.setuptools.dynamic.dependencies]
+file = "requirements.txt"
+
+[tool.setuptools.dynamic.version]
+attr = "wait_people_analytics.__version__"
+
+[tool.setuptools.packages.find]
+where = [ "src",]
+namespaces = false
