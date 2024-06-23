@@ -1,9 +1,0 @@
-Co musi byc na 100%
-
-Podsumujemy liczbę osób na każdym poziomie zaawansowania dla poszczególnych umiejętności.
-Zidentyfikujemy, które umiejętności są najczęściej oceniane na poziomie mentor (4) oraz które mają najwięcej zainteresowanych (2).
-
-Mozliwe Analizy:
-  Zgrupowac osob ktore zaznaczyli 4 na 3, zeby patrzec na nich bardziej jak na osoby ktore dobrze cos ogarniaja(to pozwoli szukać osób kompetetnych w danej dziedzinie, i w razie np. potrzeby zamiany jednej osoby inną, będziemy w stanie to zrobić)
-
-  Zmienić dystans pomiędzy osobami któe zaznaczyli 1 i 3, i 0 i 3, bo osoba nie świadoma musi znajdować się bliżej do osób które coś znają, nić osoby które w tym kompletnie nie zainteresowane)

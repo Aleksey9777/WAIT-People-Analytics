@@ -1,3 +1,9 @@
 .idea
 .venv
 __pycache__
+.telemetry
+session_store.db
+stats.json
+conf/local/credentials.yml
+data/02_Interim/*
+data/03_Processed/*
