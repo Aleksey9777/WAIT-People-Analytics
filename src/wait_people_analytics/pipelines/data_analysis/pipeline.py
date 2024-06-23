@@ -27,25 +27,25 @@ def create_pipeline(**kwargs) -> Pipeline:
             ),
             node(
                 func=generate_overall_stackedbar_visual,
-                inputs="filter_project_participants_data",
+                inputs=["filter_project_participants_data", "params:analytics_legend_mapping"],
                 outputs="overall_stackedbar_visual",
                 name="generate_overall_stackedbar_visual",
             ),
             node(
                 func=generate_top_interested_stackedbar_visual,
-                inputs="filter_project_participants_data",
+                inputs=["filter_project_participants_data", "params:analytics_legend_mapping"],
                 outputs="top_interested_stackedbar_visual",
                 name="generate_top_interested_stackedbar_visual",
             ),
             node(
                 func=generate_top_not_interested_stackedbar_visual,
-                inputs="filter_project_participants_data",
+                inputs=["filter_project_participants_data", "params:analytics_legend_mapping"],
                 outputs="top_not_interested_stackedbar_visual",
                 name="generate_top_not_interested_stackedbar_visual",
             ),
             node(
                 func=generate_top_unconscious_stackedbar_visual,
-                inputs="filter_project_participants_data",
+                inputs=["filter_project_participants_data", "params:analytics_legend_mapping"],
                 outputs="top_unconscious_stackedbar_visual",
                 name="generate_top_unconscious_stackedbar_visual",
             )
