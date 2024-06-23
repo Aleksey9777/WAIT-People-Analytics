@@ -20,16 +20,13 @@ processed_survey:
     kedro-viz:
       layer: processed
 
-
-hierarchical_clustering_visual:
-  type: matplotlib.MatplotlibWriter
-  filepath: figures/hierarchical_clustering_visual.png
-  versioned: false
-
 overall_stackedbar_visual:
   type: matplotlib.MatplotlibWriter
   filepath: figures/overall_stackedbar_visual.png
   versioned: false
+  metadata:
+    kedro-viz:
+      layer: analysis
 
 top_interested_stackedbar_visual:
   type: matplotlib.MatplotlibWriter
@@ -69,3 +66,11 @@ filter_project_participants_data:
   metadata:
     kedro-viz:
       layer: interim
+
+hierarchical_clustering_visual:
+  type: matplotlib.MatplotlibWriter
+  filepath: figures/hierarchical_clustering_visual.png
+  versioned: false
+  metadata:
+    kedro-viz:
+      layer: clustering

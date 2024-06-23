@@ -4,6 +4,7 @@ from .nodes import (
     generate_hierarchical_clustering_visual
 )
 
+
 def create_pipeline(**kwargs) -> Pipeline:
     return pipeline(
         [
