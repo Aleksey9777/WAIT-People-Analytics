@@ -7,8 +7,9 @@ import scipy.cluster.hierarchy as sch
 
 
 def generate_hierarchical_clustering_visual(df: pd.DataFrame) -> Any:
-    df_without_id = df.drop(columns= "ID")
-    clustering = sch.linkage(df_without_id, method="ward")
+    filtered_df = df.drop(columns= "ID")
+    filtered_df = filtered_df.replace( {0: 1, 1:0})
+    clustering = sch.linkage(filtered_df, method="ward")
     plt.figure(figsize=(10, 4))
     sch.dendrogram(clustering)
     plt.xticks(rotation=90)
