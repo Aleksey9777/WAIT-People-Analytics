@@ -1,26 +1,83 @@
 raw_survey:
   type: pandas.ExcelDataset
   filepath: data/01_Raw/01_DataCompetencySurvey.xlsx
+  metadata:
+    kedro-viz:
+      layer: raw
 
-processed_survey:
-  type: pandas.CSVDataset
-  filepath: data/02_Interim/01_DataCompetencySurvey.csv
+renamed_raw_survey:
+  type: pandas.ExcelDataset
+  filepath: data/01_Raw/01_DataCompetencySurvey.xlsx
+  metadata:
+    kedro-viz:
+      layer: raw
 
 missing_value_heatmap_plot:
   type: matplotlib.MatplotlibWriter
   filepath: figures/missing_values.png
   versioned: false
+  metadata:
+    kedro-viz:
+      layer: raw
+
+processed_survey:
+  type: pandas.CSVDataset
+  filepath: data/02_Interim/01_DataCompetencySurvey.csv
+  metadata:
+    kedro-viz:
+      layer: preprocessing
+
+numeric_df:
+  type: pandas.CSVDataset
+  filepath: data/02_Interim/numeric_df.csv
+  metadata:
+    kedro-viz:
+      layer: preprocessing
+
+overall_stackedbar_visual:
+  type: matplotlib.MatplotlibWriter
+  filepath: figures/overall_stackedbar_visual.png
+  versioned: false
+  metadata:
+    kedro-viz:
+      layer: analysis
+
+top_interested_stackedbar_visual:
+  type: matplotlib.MatplotlibWriter
+  filepath: figures/top_interested_stackedbar_visual.png
+  versioned: false
+  metadata:
+    kedro-viz:
+      layer: analysis
+
+top_not_interested_stackedbar_visual:
+  type: matplotlib.MatplotlibWriter
+  filepath: figures/top_not_interested_stackedbar_visual.png
+  versioned: false
+  metadata:
+    kedro-viz:
+      layer: analysis
+
+top_unconscious_stackedbar_visual:
+  type: matplotlib.MatplotlibWriter
+  filepath: figures/top_unconscious_stackedbar_visual.png
+  versioned: false
+  metadata:
+    kedro-viz:
+      layer: analysis
 
 corr_matrix_visual:
   type: matplotlib.MatplotlibWriter
   filepath: figures/corrMatrix.png
   versioned: false
-
-filter_project_participants_data:
-  type: pandas.CSVDataset
-  filepath: data/02_Interim/filter_project_participants_data.csv
+  metadata:
+    kedro-viz:
+      layer: analysis
 
 hierarchical_clustering_visual:
   type: matplotlib.MatplotlibWriter
   filepath: figures/hierarchical_clustering_visual.png
   versioned: false
+  metadata:
+    kedro-viz:
+      layer: clustering

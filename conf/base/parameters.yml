@@ -1,0 +1,6 @@
+analytics_legend_mapping:
+    0: "Unconscious"
+    1: "Not Interested"
+    2: "Interested"
+    3: "Competent"
+    4: "Mentor"
