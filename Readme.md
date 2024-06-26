@@ -92,15 +92,39 @@ After consulting with the client, merging mentors with the "3" skill level group
 
 ## Analysis
 
-> [!NOTE]
-> This paragraph will be updated in the future as the project develops.
-> 
+The data analysis process illustrates the pathway from the initial stage of generating a correlation matrix visualization, through deriving insights, to creating specific visualizations tailored to different stakeholder groups. Below is a description of the process, which encompasses a series of steps leading to valuable insights.
+
+### Generating a correlation matrix visualization
+The chart presents a correlation matrix that shows the relationships between various variables. Correlation values range from -1 to 1, where:
+- 1 indicates a perfect positive correlation (variables increase or decrease together).
+- -1 indicates a perfect negative correlation (one variable increases while the other decreases).
+- 0 indicates no correlation.
+<br /><br />
+
+<p align="center">
+<img
+    width="400"
+		alt="Correlation matrix visualization"
+		src="figures/corrMatrix.png">
+</p>
+
 ## Clustering
 
-> [!NOTE]
-> This paragraph will be updated in the future as the project develops.
+The final result of the conducted analyses is the dendrogram presented below, which visualizes hierarchical clustering of the data. This involves iteratively combining the closest data points, thereby creating a hierarchy of clusters. The dendrogram illustrates this hierarchy in the form of a tree, where:
 
-# 🗝️ Conclusions and visualizations
+- the horizontal axis represents the IDs of WAIT organization members.
+- the vertical axis represents the distance or diversity between clusters (the higher the level, the greater the diversity).
+<br /><br />
+
+<p align="center">
+<img
+    width="400"
+		alt="Correlation matrix visualization"
+		src="figures/dendrogram.png">
+</p>
+
+Clusters are marked with different colors, which makes it easier to identify the groups. The height on the vertical axis at which two points or clusters are joined indicates the level of similarity (a lower level means greater similarity).
+# 🗝️ Findings
 
 > [!NOTE]
 > This paragraph will be updated in the future as the project develops.
