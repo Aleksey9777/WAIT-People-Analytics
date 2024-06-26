@@ -1,13 +1,13 @@
 raw_survey:
   type: pandas.ExcelDataset
-  filepath: data/01_Raw/01_DataCompetencySurvey.xlsx
+  filepath: data/01_Raw/DataCompetencySurvey.xlsx
   metadata:
     kedro-viz:
       layer: raw
 
 renamed_raw_survey:
-  type: pandas.ExcelDataset
-  filepath: data/01_Raw/01_DataCompetencySurvey_renamed.xlsx
+  type: pandas.CSVDataset
+  filepath: data/01_Raw/DataCompetencySurvey_renamed.csv
   metadata:
     kedro-viz:
       layer: raw
@@ -22,7 +22,7 @@ missing_value_heatmap_plot:
 
 processed_survey:
   type: pandas.CSVDataset
-  filepath: data/02_Interim/01_DataCompetencySurvey.csv
+  filepath: data/02_Interim/processed_survey.csv
   metadata:
     kedro-viz:
       layer: preprocessing
