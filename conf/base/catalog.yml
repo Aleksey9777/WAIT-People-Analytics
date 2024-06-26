@@ -7,7 +7,7 @@ raw_survey:
 
 renamed_raw_survey:
   type: pandas.ExcelDataset
-  filepath: data/01_Raw/01_DataCompetencySurvey.xlsx
+  filepath: data/01_Raw/01_DataCompetencySurvey_renamed.xlsx
   metadata:
     kedro-viz:
       layer: raw
