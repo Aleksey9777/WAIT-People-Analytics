@@ -9,6 +9,7 @@ import seaborn as sns
 def generate_corr_matrix_visual(df: pd.DataFrame) -> Any:
     df = df.copy()
     df = df.drop(columns=["ID"])
+    plt.tight_layout()
     numeric_df = df.select_dtypes(include=[np.number])
     corr_matrix = numeric_df.corr(method='spearman')
 

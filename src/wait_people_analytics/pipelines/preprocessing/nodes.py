@@ -97,3 +97,11 @@ def filter_project_participants(df: pd.DataFrame) -> Any:
     df = df[df["Participant"] == 1]
     df = df.drop(columns=["Participant", "Organizer", "Consumer"])
     return df
+
+
+def swap_zero_with_one(df: pd.DataFrame) -> pd.DataFrame:
+    ids = df["ID"]
+    df = df.drop(columns="ID")
+    replaced = df.replace({0: 1, 1: 0})
+    replaced["ID"] = ids
+    return replaced

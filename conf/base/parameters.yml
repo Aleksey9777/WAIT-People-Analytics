@@ -1,6 +1,45 @@
 analytics_legend_mapping:
-    0: "Unconscious"
-    1: "Not Interested"
+    0: "Not Interested"
+    1: "Unconscious"
     2: "Interested"
     3: "Competent"
     4: "Mentor"
+
+clustering_skill_scaling:
+    0: 0
+    1: 2
+    2: 3
+    3: 5
+    4: 6
+
+hierarchical_params:
+    n_clusters: 5
+    metric: euclidean
+    linkage: complete
+
+k_means_params:
+    n_clusters: 4
+    max_iter: 300000  # Note: k means seems to converge very quickly in our dataset, raising it may have no impact whatsoever
+
+selected_columns:
+  - ID
+  - R
+  - Python
+  - Bash
+  - GIT
+  - Docker
+  - CLI
+  - Frontend
+  - SQL
+  - NoSQL
+  - Azure
+  - AWS
+  - GPC
+  - PowerBI
+  - Tableau
+  - "Area: Time Series"
+  - "Area: Classical ML"
+  - "Area: NLP"
+  - "Computer Vision"
+  - "UxUi"
+  - "Graphic design"

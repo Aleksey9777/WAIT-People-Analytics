@@ -1,4 +1,4 @@
-from typing import Any
+from typing import Any, Optional
 
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -19,7 +19,7 @@ def generate_top_interested_stackedbar_visual(
 ) -> Any:
     df = _get_skill_count(df, analytics_legend_mapping)
     df = df.sort_values(by=2, ascending=False)
-    return _get_bar_plot(df, analytics_legend_mapping, "Top by Count of Interested")
+    return _get_bar_plot(df, analytics_legend_mapping, "Top by Count of Interested", top_n=8)
 
 
 def generate_top_not_interested_stackedbar_visual(
@@ -28,7 +28,7 @@ def generate_top_not_interested_stackedbar_visual(
 ) -> Any:
     df = _get_skill_count(df, analytics_legend_mapping)
     df = df.sort_values(by=1, ascending=False)
-    return _get_bar_plot(df, analytics_legend_mapping, "Top by Count of Not Interested")
+    return _get_bar_plot(df, analytics_legend_mapping, "Top by Count of Not Interested", top_n=8)
 
 
 def generate_top_unconscious_stackedbar_visual(
@@ -37,13 +37,13 @@ def generate_top_unconscious_stackedbar_visual(
 ) -> Any:
     df = _get_skill_count(df, analytics_legend_mapping)
     df = df.sort_values(by=0, ascending=False)
-    return _get_bar_plot(df, analytics_legend_mapping, "Top by Count of Unconscious")
+    return _get_bar_plot(df, analytics_legend_mapping, "Top by Count of Unconscious", top_n=8)
 
 
 def _get_skill_count(df: pd.DataFrame, mapping: dict[int, str]) -> pd.DataFrame:
     skill_values = list(mapping.keys())
     skill_counts = {value: [] for value in skill_values}
-
+    df.drop(columns=["ID"], inplace=True)
     for col in df.columns[1:]:
         for value in skill_values:
             count = (df[col] == value).sum()
@@ -52,12 +52,18 @@ def _get_skill_count(df: pd.DataFrame, mapping: dict[int, str]) -> pd.DataFrame:
     return pd.DataFrame(skill_counts, index=df.columns[1:])
 
 
-def _get_bar_plot(df: pd.DataFrame, mapping: dict[int: str], plot_title: str) -> Any:
+def _get_bar_plot(
+    df: pd.DataFrame,
+    mapping: dict[int: str],
+    plot_title: str,
+    top_n: Optional[int] = None,
+) -> Any:
     skill_values = list(mapping.keys())
 
-    count_df = df.head(8)
+    if top_n:
+        df = df.head(8)
     plt.figure(figsize=(10, 6))
-    ax = count_df.plot(kind="bar", stacked=True, figsize=(10, 6))
+    ax = df.plot(kind="bar", stacked=True, figsize=(10, 6))
     plt.title(plot_title)
     plt.xlabel("Skill")
     plt.ylabel("Count")
@@ -70,4 +76,5 @@ def _get_bar_plot(df: pd.DataFrame, mapping: dict[int: str], plot_title: str) ->
     sorted_labels = [mapping[idx] for idx in sort_order]
 
     ax.legend(sorted_handles, sorted_labels, title="Skill Value", bbox_to_anchor=(1.05, 1), loc="upper left")
+    plt.tight_layout()
     return plt
