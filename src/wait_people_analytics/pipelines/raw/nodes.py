@@ -75,4 +75,5 @@ def generate_missing_value_heatmap(df: pd.DataFrame) -> Any:
     plt.figure(figsize=(18, 13))
     sns.heatmap(df.isnull(), cbar=False, cmap="YlGnBu")
     plt.title("Heatmap of Missing Values")
+    plt.tight_layout()
     return plt

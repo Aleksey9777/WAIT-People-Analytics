@@ -4,6 +4,7 @@ from .nodes import (
     change_participation_detail_to_df,
     drop_columns,
     filter_project_participants,
+    swap_zero_with_one,
 )
 
 
@@ -28,8 +29,14 @@ def create_pipeline(**kwargs) -> Pipeline:
             node(
                 func=filter_project_participants,
                 inputs="numeric_df",
-                outputs="processed_survey",
+                outputs="filtered_survey",
                 name="filter_project_participants",
+            ),
+            node(
+                func=swap_zero_with_one,
+                inputs="filtered_survey",
+                outputs="processed_survey",
+                name="swap_zero_with_one",
             ),
         ]
     )
