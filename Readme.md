@@ -52,9 +52,6 @@ The data used in this project was collected through a survey conducted among mem
 
 For this project, we decided to use Kedro, an open-source platform for data workflow management that integrates with Python and facilitates building scalable data pipelines. By utilizing Kedro, we gained better control over data quality and improved our ability to manage complex data analysis processes. This tool allowed us to organize and manage code in a modular and easily scalable manner. Thanks to Kedro, we were able to effectively model the team members' competencies, conduct advanced analyses, and create precise user clusters, which directly contributed to better human resource allocation and optimization of project management within the WAIT organization.
 
-> [!NOTE]
-> Chart here will be updated in the future as the project develops.
-
 ## Data preprocessing
 In the initial data preprocessing stage, several operations were carried out to improve the quality and usability of the collected information.
 
@@ -103,9 +100,56 @@ The chart presents a correlation matrix that shows the relationships between var
 
 <p align="center">
 <img
-    width="400"
+    width="500"
 		alt="Correlation matrix visualization"
 		src="figures/corrMatrix.png">
+</p>
+
+### Overall skill level distribution
+The chart below highlights the distribution of skill levels among individuals for various technical and management skills. It shows areas of high interest and competence, such as SQL and Python, as well as areas where awareness and interest need to be increased, such as Computer Vision and Time Series Analysis. This data can be valuable for planning training programs and identifying skills that require more focus for development.
+<br /><br />
+
+<p align="center">
+<img
+    width="500"
+		alt="Correlation matrix visualization"
+		src="figures/overall_stackedbar_visual.png">
+</p>
+
+#### Top by Count of Interested
+This chart displays the count of people who are interested in each skill:
+- Skills: MS SQL, AWS, Azure, Tableau, GPC, Power BI, Python, Computer Vision.
+- Observation: Most skills show a significant proportion of green (Interested), with MS SQL and AWS having high interest levels. There's also a notable amount of red (Competent) and a small amount of purple (Mentor) in Python and Computer Vision.
+<br /><br />
+<p align="center">
+<img
+    width="400"
+		alt="Correlation matrix visualization"
+		src="figures/top_interested_stackedbar_visual.png">
+</p>
+
+#### Top by Count of Not Interested
+This chart highlights the count of people not interested in each skill:
+- Skills: Areas Time Series, Computer Vision, Bash, Docker, Areas NLP, Areas Classical ML, CLI, GPC.
+- Observation: Blue (Not Interested) and orange (Unconscious) dominate most bars, showing a lack of interest in these skills. There is still a substantial amount of green (Interested) and red (Competent) in skills like Computer Vision and Docker.
+<br /><br />
+<p align="center">
+<img
+    width="400"
+		alt="Correlation matrix visualization"
+		src="figures/top_not_interested_stackedbar_visual.png">
+</p>
+
+#### Top by Count of Unconscious
+This chart shows the count of people who are unconscious (unaware) of each skill:
+- Skills: Project & Graf, Promo Social Media, Wsp. z adm. LEW, Ux/UI, Podst. z Finans, Frontend, Project Management, Matem. Rel. i Anuk.
+- Observation: Blue (Not Interested) and orange (Unconscious) are dominant, indicating high levels of unawareness. There's a significant amount of red (Competent) and green (Interested) in Project Management.
+<br /><br />
+<p align="center">
+<img
+    width="400"
+		alt="Correlation matrix visualization"
+		src="figures/top_unconscious_stackedbar_visual.png">
 </p>
 
 ## Clustering
@@ -128,6 +172,10 @@ Clusters are marked with different colors, which makes it easier to identify the
 
 > [!NOTE]
 > This paragraph will be updated in the future as the project develops.
+>> - 
+>> - 
+>> - 
+
 
 # 👨‍💻 Team and Tools
 The project is carried out by a three-person team of Master's students of Computer Science in Business as part of the Data Mining course:
