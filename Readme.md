@@ -123,7 +123,7 @@ This chart displays the count of people who are interested in each skill:
 <br /><br />
 <p align="center">
 <img
-    width="400"
+    width="500"
 		alt="Correlation matrix visualization"
 		src="figures/top_interested_stackedbar_visual.png">
 </p>
@@ -135,7 +135,7 @@ This chart highlights the count of people not interested in each skill:
 <br /><br />
 <p align="center">
 <img
-    width="400"
+    width="500"
 		alt="Correlation matrix visualization"
 		src="figures/top_not_interested_stackedbar_visual.png">
 </p>
@@ -147,7 +147,7 @@ This chart shows the count of people who are unconscious (unaware) of each skill
 <br /><br />
 <p align="center">
 <img
-    width="400"
+    width="500"
 		alt="Correlation matrix visualization"
 		src="figures/top_unconscious_stackedbar_visual.png">
 </p>
@@ -162,7 +162,7 @@ The final result of the conducted analyses is the dendrogram presented below, wh
 
 <p align="center">
 <img
-    width="400"
+    width="500"
 		alt="Correlation matrix visualization"
 		src="figures/dendrogram.png">
 </p>
