@@ -51,6 +51,7 @@ def _get_pipeline_template() -> Pipeline:
                 inputs=[
                     "scaled_skills_table",
                     "params:hierarchical_params",
+                    "params:clustering_skill_scaling",
                 ],
                 outputs="hierarchical_clustered_table",
             ),
