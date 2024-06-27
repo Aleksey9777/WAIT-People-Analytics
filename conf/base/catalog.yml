@@ -74,7 +74,7 @@ top_not_interested_stacked_bar_visual:
 
 top_unaware_stacked_bar_visual:
   type: matplotlib.MatplotlibWriter
-  filepath: figures/top_unconscious_stacked_bar_visual.png
+  filepath: figures/top_unaware_stacked_bar_visual.png
   versioned: false
   metadata:
     kedro-viz:
