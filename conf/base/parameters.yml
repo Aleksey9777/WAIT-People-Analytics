@@ -45,6 +45,8 @@ hard_skills_grouping.selected_columns:
   - "UxUi"
   - "Graphic design"
 
+hard_skills_grouping.color_threshold: 12.5
+
 # Soft skills
 soft_skills_grouping.clustering_skill_scaling:
   0: 0
@@ -72,3 +74,5 @@ soft_skills_grouping.selected_columns:
   - "Obt. Fin."
   - "Coop. UEW admin."
   - "HR"
+
+soft_skills_grouping.color_threshold: 10.0

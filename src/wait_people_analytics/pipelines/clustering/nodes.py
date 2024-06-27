@@ -37,6 +37,7 @@ def prepare_data_for_clustering(
 def generate_hierarchical_clustering_visual(
     df: pd.DataFrame,
     hierarchical_params: dict[str, Any],
+    color_threshold: float,
 ) -> Any:
     """
     Generate full dendrogram of hierarchical clustering
@@ -74,13 +75,11 @@ def generate_hierarchical_clustering_visual(
     ).astype(float)
 
     # Plot the corresponding dendrogram
-    sch.dendrogram(linkage_matrix)
+    sch.dendrogram(linkage_matrix, color_threshold=color_threshold)
 
-    # plt.figure(figsize=(10, 4))
-    # plt.xticks(rotation=90)
-    # plt.title("Dendrogram")
-    # plt.xlabel("UserId")
-    # plt.ylabel("Distance")
+    plt.title("Dendrogram")
+    plt.xlabel("UserId")
+    plt.ylabel("Distance")
     return plt
 
 
