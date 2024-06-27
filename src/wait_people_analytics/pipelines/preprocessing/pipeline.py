@@ -12,11 +12,17 @@ def create_pipeline(**kwargs) -> Pipeline:
     return pipeline(
         namespace="data_preprocessing",
         inputs={"renamed_raw_survey"},
-        outputs={"processed_survey"},
+        outputs={"processed_survey_combined", "processed_survey_organizers", "processed_survey_participants"},
         pipe=[
             node(
-                func=change_participation_detail_to_df,
+                func=swap_zero_with_one,
                 inputs="renamed_raw_survey",
+                outputs="rescaled_survey",
+                name="swap_zero_with_one",
+            ),
+            node(
+                func=change_participation_detail_to_df,
+                inputs="rescaled_survey",
                 outputs="changed_participation_detail",
                 name="add_participation_detail_to_df",
             ),
@@ -29,14 +35,8 @@ def create_pipeline(**kwargs) -> Pipeline:
             node(
                 func=filter_project_participants,
                 inputs="numeric_df",
-                outputs="filtered_survey",
+                outputs=["processed_survey_combined", "processed_survey_organizers", "processed_survey_participants"],
                 name="filter_project_participants",
-            ),
-            node(
-                func=swap_zero_with_one,
-                inputs="filtered_survey",
-                outputs="processed_survey",
-                name="swap_zero_with_one",
             ),
         ]
     )
