@@ -20,9 +20,23 @@ missing_value_heatmap_plot:
     kedro-viz:
       layer: raw
 
-processed_survey:
+processed_survey_combined:
   type: pandas.CSVDataset
-  filepath: data/02_Interim/processed_survey.csv
+  filepath: data/02_Interim/processed_survey_combined.csv
+  metadata:
+    kedro-viz:
+      layer: preprocessing
+
+processed_survey_organizers:
+  type: pandas.CSVDataset
+  filepath: data/02_Interim/processed_survey_organizers.csv
+  metadata:
+    kedro-viz:
+      layer: preprocessing
+
+processed_survey_participants:
+  type: pandas.CSVDataset
+  filepath: data/02_Interim/processed_survey_participants.csv
   metadata:
     kedro-viz:
       layer: preprocessing
@@ -66,54 +80,117 @@ top_unaware_stacked_bar_visual:
     kedro-viz:
       layer: analysis
 
-corr_matrix_visual:
+corr_matrix_visual_combined:
   type: matplotlib.MatplotlibWriter
-  filepath: figures/corrMatrix.png
+  filepath: figures/corrMatrix_combined.png
   versioned: false
   metadata:
     kedro-viz:
       layer: analysis
 
-scaled_skills_table:
+corr_matrix_visual_organizers:
+  type: matplotlib.MatplotlibWriter
+  filepath: figures/corrMatrix_organizers.png
+  versioned: false
+  metadata:
+    kedro-viz:
+      layer: analysis
+
+corr_matrix_visual_participants:
+  type: matplotlib.MatplotlibWriter
+  filepath: figures/corrMatrix_participants.png
+  versioned: false
+  metadata:
+    kedro-viz:
+      layer: analysis
+
+# Hard skills Data
+hard_skills_grouping.scaled_skills_table:
   type: pandas.CSVDataset
-  filepath: data/03_Processed/scaled_skills_table.csv
+  filepath: data/03_Processed/hard_skills_grouping/scaled_skills_table.csv
   metadata:
     kedro-viz:
       layer: clustering
 
-hierarchical_clustering_visual:
+hard_skills_grouping.hierarchical_clustering_visual:
   type: matplotlib.MatplotlibWriter
-  filepath: figures/hierarchical_clustering_visual.png
+  filepath: figures/hard_skills_grouping/hierarchical_clustering_visual.png
   versioned: false
   metadata:
     kedro-viz:
       layer: clustering
 
-hierarchical_clustered_table:
+hard_skills_grouping.hierarchical_clustered_table:
   type: pandas.CSVDataset
-  filepath: data/03_Processed/hierarchical_clustered_table.csv
+  filepath: data/03_Processed/hard_skills_grouping/hierarchical_clustered_table.csv
   metadata:
     kedro-viz:
       layer: clustering
 
-k_means_sse_plot:
+hard_skills_grouping.k_means_sse_plot:
   type: matplotlib.MatplotlibWriter
-  filepath: figures/k_means_sse_plot.png
+  filepath: figures/hard_skills_grouping/k_means_sse_plot.png
   versioned: false
   metadata:
     kedro-viz:
       layer: clustering
 
-k_means_clustered_table:
+hard_skills_grouping.k_means_clustered_table:
   type: pandas.CSVDataset
-  filepath: data/03_Processed/k_means_clustered_table.csv
+  filepath: data/03_Processed/hard_skills_grouping/k_means_clustered_table.csv
   metadata:
     kedro-viz:
       layer: clustering
 
-hierarchical_cluster_heatmap:
+hard_skills_grouping.hierarchical_cluster_heatmap:
   type: matplotlib.MatplotlibWriter
-  filepath: figures/hierarchical_heatmap.png
+  filepath: figures/hard_skills_grouping/hierarchical_heatmap.png
+  versioned: false
+  metadata:
+    kedro-viz:
+      layer: clustering
+
+# Soft skills Data
+soft_skills_grouping.scaled_skills_table:
+  type: pandas.CSVDataset
+  filepath: data/03_Processed/soft_skills_grouping/scaled_skills_table.csv
+  metadata:
+    kedro-viz:
+      layer: clustering
+
+soft_skills_grouping.hierarchical_clustering_visual:
+  type: matplotlib.MatplotlibWriter
+  filepath: figures/soft_skills_grouping/hierarchical_clustering_visual.png
+  versioned: false
+  metadata:
+    kedro-viz:
+      layer: clustering
+
+soft_skills_grouping.hierarchical_clustered_table:
+  type: pandas.CSVDataset
+  filepath: data/03_Processed/soft_skills_grouping/hierarchical_clustered_table.csv
+  metadata:
+    kedro-viz:
+      layer: clustering
+
+soft_skills_grouping.k_means_sse_plot:
+  type: matplotlib.MatplotlibWriter
+  filepath: figures/soft_skills_grouping/k_means_sse_plot.png
+  versioned: false
+  metadata:
+    kedro-viz:
+      layer: clustering
+
+soft_skills_grouping.k_means_clustered_table:
+  type: pandas.CSVDataset
+  filepath: data/03_Processed/soft_skills_grouping/k_means_clustered_table.csv
+  metadata:
+    kedro-viz:
+      layer: clustering
+
+soft_skills_grouping.hierarchical_cluster_heatmap:
+  type: matplotlib.MatplotlibWriter
+  filepath: figures/soft_skills_grouping/hierarchical_heatmap.png
   versioned: false
   metadata:
     kedro-viz:

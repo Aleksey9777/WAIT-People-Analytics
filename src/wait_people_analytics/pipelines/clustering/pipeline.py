@@ -1,4 +1,5 @@
-from kedro.pipeline import Pipeline, node, pipeline
+from kedro.pipeline import Pipeline, node
+from kedro.pipeline.modular_pipeline import pipeline
 
 from .nodes import (
     generate_hierarchical_clustering_visual,
@@ -11,6 +12,20 @@ from .nodes import (
 
 
 def create_pipeline(**kwargs) -> Pipeline:
+    hard_skill_grouping_pipeline = pipeline(
+        pipe=_get_pipeline_template(),
+        namespace="hard_skills_grouping",
+        inputs={"processed_survey": "processed_survey_participants"},
+    )
+    soft_skill_grouping_pipeline = pipeline(
+        pipe=_get_pipeline_template(),
+        namespace="soft_skills_grouping",
+        inputs={"processed_survey": "processed_survey_organizers"},
+    )
+    return hard_skill_grouping_pipeline + soft_skill_grouping_pipeline
+
+
+def _get_pipeline_template() -> Pipeline:
     return pipeline(
         [
             node(
@@ -21,7 +36,6 @@ def create_pipeline(**kwargs) -> Pipeline:
                     "params:selected_columns",
                 ],
                 outputs="scaled_skills_table",
-                name="prepare_data_for_clustering",
             ),
             node(
                 func=generate_hierarchical_clustering_visual,
@@ -30,7 +44,6 @@ def create_pipeline(**kwargs) -> Pipeline:
                     "params:hierarchical_params",
                 ],
                 outputs="hierarchical_clustering_visual",
-                name="generate_hierarchical_clustering_visual",
             ),
             node(
                 func=generate_hierarchical_table,
@@ -39,7 +52,6 @@ def create_pipeline(**kwargs) -> Pipeline:
                     "params:hierarchical_params",
                 ],
                 outputs="hierarchical_clustered_table",
-                name="generate_hierarchical_table",
             ),
             node(
                 func=generate_heatmap,
@@ -48,7 +60,6 @@ def create_pipeline(**kwargs) -> Pipeline:
                     "params:clustering_skill_scaling",
                 ],
                 outputs="hierarchical_cluster_heatmap",
-                name="generate_hierarchical_heatmap",
             ),
             node(
                 func=generate_k_means_sse_plot,
@@ -57,7 +68,6 @@ def create_pipeline(**kwargs) -> Pipeline:
                     "params:k_means_params",
                 ],
                 outputs="k_means_sse_plot",
-                name="generate_k_means_sse_plot",
             ),
             node(
                 func=generate_k_means_clusters,
@@ -66,7 +76,6 @@ def create_pipeline(**kwargs) -> Pipeline:
                     "params:k_means_params",
                 ],
                 outputs="k_means_clustered_table",
-                name="generate_k_means_clusters",
             ),
         ]
     )

@@ -1,27 +1,28 @@
 analytics_legend_mapping:
-    0: "Not Interested"
-    1: "Unconscious"
-    2: "Interested"
-    3: "Competent"
-    4: "Mentor"
+  0: "Not Interested"
+  1: "Unconscious"
+  2: "Interested"
+  3: "Competent"
+  4: "Mentor"
+# Hard skills param
+hard_skills_grouping.clustering_skill_scaling:
+  0: 0
+  1: 2
+  2: 3
+  3: 5
+  4: 6
 
-clustering_skill_scaling:
-    0: 0
-    1: 2
-    2: 3
-    3: 5
-    4: 6
+hard_skills_grouping.hierarchical_params:
+  n_clusters: 5
+  metric: euclidean
+  linkage: complete
 
-hierarchical_params:
-    n_clusters: 5
-    metric: euclidean
-    linkage: complete
+hard_skills_grouping.k_means_params:
+  random_state: 987
+  n_clusters: 4
+  max_iter: 300000  # Note: k means seems to converge very quickly in our dataset, raising it may have no impact whatsoever
 
-k_means_params:
-    n_clusters: 4
-    max_iter: 300000  # Note: k means seems to converge very quickly in our dataset, raising it may have no impact whatsoever
-
-selected_columns:
+hard_skills_grouping.selected_columns:
   - ID
   - R
   - Python
@@ -43,3 +44,31 @@ selected_columns:
   - "Computer Vision"
   - "UxUi"
   - "Graphic design"
+
+# Soft skills
+soft_skills_grouping.clustering_skill_scaling:
+  0: 0
+  1: 2
+  2: 3
+  3: 5
+  4: 6
+
+soft_skills_grouping.hierarchical_params:
+  n_clusters: 4
+  metric: euclidean
+  linkage: ward
+
+soft_skills_grouping.k_means_params:
+  random_state: 987
+  n_clusters: 4
+  max_iter: 300000  # Note: k means seems to converge very quickly in our dataset, raising it may have no impact whatsoever
+
+soft_skills_grouping.selected_columns:
+  - ID
+  - "Project Management"
+  - "Social Media Prom."
+  - "Est. Business Relat."
+  - "Est. Scientists Relat."
+  - "Obt. Fin."
+  - "Coop. UEW admin."
+  - "HR"

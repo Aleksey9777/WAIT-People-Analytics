@@ -2,7 +2,7 @@
 	<img
 		width="300"
 		alt="Wait logo"
-		src="figures/wait-logo.jpg">
+		src="figures/static/wait-logo.jpg">
 <br /><br />
   <strong>Data Mining Advanced HR Analytics for WAIT </strong><br /><br />
 </h1>
@@ -62,12 +62,12 @@ Several survey responses contained missing values and were removed from further 
 To enhance data analysis, three boolean columns were added to the data sheet, representing forms of participation: involvement in data projects, organizing community life, and consuming content. These columns take values of 1 (true) or 0 (false) based on the respondents' answers. Subsequently, filtering was conducted to retain only individuals interested in participating in data projects, discarding other records. The resulting table is presented below.
 
 
- | Value                                                               | Consumer | Organizer | Participant |
-|---------------------------------------------------------------------|----------|-----------|-------------|
-| I want to organize the "life" Community                             | 0        | 1        | 0           |
- | I want to participate in the data project                           | 0        | 0         | 1           |
- | I want to participate in the data project and organize the "life" Community | 0        | 1         | 1           |
-  | For now, I want to draw, observe, "consume content"                 | 1        | 0         | 0           |
+| Value                                                                       | Consumer | Organizer | Participant |
+|-----------------------------------------------------------------------------|----------|-----------|-------------|
+| I want to organize the "life" Community                                     | 0        | 1         | 0           |
+| I want to participate in the data project                                   | 0        | 0         | 1           |
+| I want to participate in the data project and organize the "life" Community | 0        | 1         | 1           |
+| For now, I want to draw, observe, "consume content"                         | 1        | 0         | 0           |
 
 
 ### 3. Removal of "business" columns
@@ -76,13 +76,13 @@ Eight columns related to "Industry Knowledge" were removed from the analysis bec
 ### 4. Data transformation and standardization
 Modifications were also made in the classification of respondents. Those who were uninterested and unaware were swapped places, allowing for more consistent groups in the dendrogram, thereby improving clustering results. Skill level schema is presented below.
 
-| Level | Description                                    |
-|-------|------------------------------------------------|
-| 0     | Unaware - I have not heard of this             |
+| Level | Description                                          |
+|-------|------------------------------------------------------|
+| 0     | Unaware - I have not heard of this                   |
 | 1     | Uninterested - I don't know, I prefer something else |
-| 2     | Interested - I don't know, but I want to learn |
-| 3     | Competent - I know/am interested               |
-| 4     | Mentor - I know and want to help others        |
+| 2     | Interested - I don't know, but I want to learn       |
+| 3     | Competent - I know/am interested                     |
+| 4     | Mentor - I know and want to help others              |
 
 ### 5. Skill scale adjustment
 After consulting with the client, merging mentors with the "3" skill level group was rejected. This decision was based on recognizing the value of the declaration of willingness to teach others as a valuable distinction that deserves separate consideration. Therefore, distance scale adjustments were made to better reflect differences between skill level groups. This change aimed to provide more precise differentiation between groups with varying levels of expertise.
@@ -113,7 +113,7 @@ The chart below highlights the distribution of skill levels among individuals fo
 <img
     width="500"
 		alt="Correlation matrix visualization"
-		src="figures/overall_stackedbar_visual.png">
+		src="figures/overall_stacked_bar_visual.png">
 </p>
 
 #### Top by Count of Interested
@@ -125,7 +125,7 @@ This chart displays the count of people who are interested in each skill:
 <img
     width="500"
 		alt="Correlation matrix visualization"
-		src="figures/top_interested_stackedbar_visual.png">
+		src="figures/top_interested_stacked_bar_visual.png">
 </p>
 
 #### Top by Count of Not Interested
@@ -137,7 +137,7 @@ This chart highlights the count of people not interested in each skill:
 <img
     width="500"
 		alt="Correlation matrix visualization"
-		src="figures/top_not_interested_stackedbar_visual.png">
+		src="figures/top_not_interested_stacked_bar_visual.png">
 </p>
 
 #### Top by Count of Unconscious
@@ -149,7 +149,7 @@ This chart shows the count of people who are unconscious (unaware) of each skill
 <img
     width="500"
 		alt="Correlation matrix visualization"
-		src="figures/top_unconscious_stackedbar_visual.png">
+		src="figures/top_unconscious_stacked_bar_visual.png">
 </p>
 
 ## Clustering
@@ -164,7 +164,7 @@ The final result of the conducted analyses is the dendrogram presented below, wh
 <img
     width="500"
 		alt="Dendrogram"
-		src="figures/hierarchical_clustering_visual.png">
+		src="figures/hard_skills_grouping/hierarchical_clustering_visual.png">
 </p>
 
 Clusters are marked with different colors, which makes it easier to identify the groups. The height on the vertical axis at which two points or clusters are joined indicates the level of similarity (a lower level means greater similarity).

@@ -87,13 +87,12 @@ def drop_columns(survey: pd.DataFrame) -> pd.DataFrame:
             "NonProfit",
             "PropTech",
             "Cybersecurity",
-            "HR",
         ]
     )
     return survey
 
 
-def filter_project_participants(df: pd.DataFrame) -> Any:
+def filter_project_participants(df: pd.DataFrame) -> list[pd.DataFrame]:
     """
     Filters the DataFrame to include only project participants.
 
@@ -102,14 +101,19 @@ def filter_project_participants(df: pd.DataFrame) -> Any:
     Returns:
         dataframe containing only project participants.
     """
-    df = df[df["Participant"] == 1]
-    df = df.drop(columns=["Participant", "Organizer", "Consumer"])
-    return df
+    combined_df = df[(df["Participant"] == 1) | (df["Organizer"] == 1)].copy()
+    combined_df.drop(columns=["Participant", "Organizer", "Consumer"], inplace=True)
+    organizers_df = df[df["Organizer"] == 1].copy()
+    organizers_df.drop(columns=["Participant", "Organizer", "Consumer"], inplace=True)
+    participants_df = df[df["Participant"] == 1].copy()
+    participants_df.drop(columns=["Participant", "Organizer", "Consumer"], inplace=True)
+    return [combined_df, organizers_df, participants_df]
 
 
 def swap_zero_with_one(df: pd.DataFrame) -> pd.DataFrame:
     ids = df["ID"]
     df = df.drop(columns="ID")
     replaced = df.replace({0: 1, 1: 0})
+    replaced.insert(0, "ID", "")
     replaced["ID"] = ids
     return replaced

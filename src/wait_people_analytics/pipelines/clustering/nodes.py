@@ -116,7 +116,7 @@ def generate_k_means_sse_plot(df: pd.DataFrame, k_means_params: dict[str, Any]) 
 
     Args:
         df: dataframe
-        k_means_params: params for k-means (n_clusters is overwritten)
+        k_means_params: params for k-means (n_clusters and random_state are overwritten)
     Returns:
         sse error plot per k
     """
@@ -132,6 +132,7 @@ def generate_k_means_sse_plot(df: pd.DataFrame, k_means_params: dict[str, Any]) 
                 **{
                     **k_means_params,
                     "n_clusters": i,
+                    "random_state": None,
                 }
             )
             model.fit_predict(df)
