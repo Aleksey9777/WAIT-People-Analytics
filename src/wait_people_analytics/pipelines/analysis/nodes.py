@@ -7,6 +7,14 @@ import seaborn as sns
 
 
 def generate_corr_matrix_visual(df: pd.DataFrame) -> Any:
+    """
+    Generates and visualizes a correlation matrix for the given DataFrame.
+
+    Args:
+        df: dataframe
+    Returns:
+        heatmap correlation matrix for the given DataFrame
+    """
     df = df.copy()
     df = df.drop(columns=["ID"])
     plt.tight_layout()

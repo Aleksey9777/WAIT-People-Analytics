@@ -34,33 +34,33 @@ numeric_df:
     kedro-viz:
       layer: preprocessing
 
-overall_stackedbar_visual:
+overall_stacked_bar_visual:
   type: matplotlib.MatplotlibWriter
-  filepath: figures/overall_stackedbar_visual.png
+  filepath: figures/overall_stacked_bar_visual.png
   versioned: false
   metadata:
     kedro-viz:
       layer: analysis
 
-top_interested_stackedbar_visual:
+top_interested_stacked_bar_visual:
   type: matplotlib.MatplotlibWriter
-  filepath: figures/top_interested_stackedbar_visual.png
+  filepath: figures/top_interested_stacked_bar_visual.png
   versioned: false
   metadata:
     kedro-viz:
       layer: analysis
 
-top_not_interested_stackedbar_visual:
+top_not_interested_stacked_bar_visual:
   type: matplotlib.MatplotlibWriter
-  filepath: figures/top_not_interested_stackedbar_visual.png
+  filepath: figures/top_not_interested_stacked_bar_visual.png
   versioned: false
   metadata:
     kedro-viz:
       layer: analysis
 
-top_unconscious_stackedbar_visual:
+top_unaware_stacked_bar_visual:
   type: matplotlib.MatplotlibWriter
-  filepath: figures/top_unconscious_stackedbar_visual.png
+  filepath: figures/top_unconscious_stacked_bar_visual.png
   versioned: false
   metadata:
     kedro-viz:

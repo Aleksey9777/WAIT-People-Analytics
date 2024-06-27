@@ -94,6 +94,14 @@ def drop_columns(survey: pd.DataFrame) -> pd.DataFrame:
 
 
 def filter_project_participants(df: pd.DataFrame) -> Any:
+    """
+    Filters the DataFrame to include only project participants.
+
+    Args:
+        df: dataframe.
+    Returns:
+        dataframe containing only project participants.
+    """
     df = df[df["Participant"] == 1]
     df = df.drop(columns=["Participant", "Organizer", "Consumer"])
     return df

@@ -14,6 +14,17 @@ def prepare_data_for_clustering(
     clustering_skill_scaling: dict[int, int],
     selected_columns: list[str],
 ) -> pd.DataFrame:
+    """
+    Prepare data for clustering, filter through selected columns and scale skill scaling
+    to the one given in param.
+
+    Args:
+        df: dataframe
+        clustering_skill_scaling: skill scaling
+        selected_columns: selected columns
+    Returns:
+        prepared dataframe
+    """
     df = df[[*selected_columns]]
     ids = df["ID"]
     df = df.drop(columns="ID")
@@ -27,6 +38,15 @@ def generate_hierarchical_clustering_visual(
     df: pd.DataFrame,
     hierarchical_params: dict[str, Any],
 ) -> Any:
+    """
+    Generate full dendrogram of hierarchical clustering
+
+    Args:
+        df: dataframe
+        hierarchical_params: params for hierarchical clustering (distance_threshold and n_clusters are overwritten)
+    Returns:
+        prepared dataframe
+    """
     df = df.drop(columns="ID")
 
     ac = AgglomerativeClustering(
@@ -67,7 +87,16 @@ def generate_hierarchical_clustering_visual(
 def generate_hierarchical_table(
     df: pd.DataFrame,
     hierarchical_params: dict[str, Any],
-) -> Any:
+) -> pd.DataFrame:
+    """
+    Group people with hierarchical clustering
+
+    Args:
+        df: dataframe
+        hierarchical_params: params for hierarchical clustering
+    Returns:
+        dataframe with groups
+    """
     df_copy = df.copy()
     df = df.drop(columns="ID")
 
@@ -80,6 +109,17 @@ def generate_hierarchical_table(
 
 
 def generate_k_means_sse_plot(df: pd.DataFrame, k_means_params: dict[str, Any]) -> Any:
+    """
+    Generate sum of squares errors for k_means clustering.
+    Because of k_means in this dataset being unstable, this function
+    takes SSE average of 10 iterations for each k.
+
+    Args:
+        df: dataframe
+        k_means_params: params for k-means (n_clusters is overwritten)
+    Returns:
+        sse error plot per k
+    """
     df = df.drop(columns="ID")
     k = range(1, 20)
     tries = 10
@@ -92,7 +132,6 @@ def generate_k_means_sse_plot(df: pd.DataFrame, k_means_params: dict[str, Any]) 
                 **{
                     **k_means_params,
                     "n_clusters": i,
-                    "max_iter": 300000,
                 }
             )
             model.fit_predict(df)
@@ -122,10 +161,12 @@ def generate_heatmap(
     df: pd.DataFrame,
     clustering_skill_scaling: dict[int, int],
 ) -> Any:
-    """Generate heatmap
+    """
+    Generate heatmap to quickly distinguish groups
 
     Args:
-        df: dataframe.
+        df: dataframe
+        clustering_skill_scaling: scaling mapping used for descaling back to original data
     Returns:
         Matplotlib plit
     """
