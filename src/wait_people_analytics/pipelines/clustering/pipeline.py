@@ -42,6 +42,7 @@ def _get_pipeline_template() -> Pipeline:
                 inputs=[
                     "scaled_skills_table",
                     "params:hierarchical_params",
+                    "params:color_threshold",
                 ],
                 outputs="hierarchical_clustering_visual",
             ),
