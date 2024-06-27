@@ -21,6 +21,16 @@ The project is carried out by a three-person team of Master's students of Comput
 
 In the project, we use the **Python** programming language and tools such as pandas and matplotlib libraries for cluster modeling.
 
+# ⚙️ How to run
+```console
+# In virtual env
+pip install -r requirements_{linux|windows}.txt
+# To run whole pipeline and generate files
+kedro run
+# To start vizualization service
+kedro viz run --autoreload
+```
+
 # 📝 Business context
 
 The project focuses on optimizing human resources management in the [WAIT](https://github.com/wait-wro) team through advanced data analysis. WAIT, for which the project is being implemented, is an open non-profit organization bringing together individuals interested in AI, Data Science and BI issues. Currently, the organization has data on the declared competences of people ready to work in projects, but there is no knowledge about the actual level and development of these skills.
@@ -198,7 +208,7 @@ The final result of the conducted analysis are the dendrograms presented below, 
 <img
     width="400"
 		alt="Soft skills hierarchical clustering visualization"
-		src="figures\soft_skills_grouping\hierarchical_clustering_visual.png">
+		src="figures/soft_skills_grouping/hierarchical_clustering_visual.png">
 </p>
 
 Clusters are marked with different colors, which makes it easier to identify the groups. The height on the vertical axis at which two points or clusters are joined indicates the level of similarity (a lower level means greater similarity).
@@ -222,7 +232,7 @@ Below are the identified groups along with a brief description.
 	<img
 		width="500"
 			alt="Hard skills group 0"
-			src="figures\static\hard_skill_group\Group_0.png">
+			src="figures/static/hard_skill_group/Group_0.png">
 	</p>
 </details>
 <details>
@@ -233,7 +243,7 @@ Below are the identified groups along with a brief description.
 	<img
 		width="500"
 			alt="Hard skills group 1"
-			src="figures\static\hard_skill_group\Group_1.png">
+			src="figures/static/hard_skill_group/Group_1.png">
 	</p>
 	</details>
 <details>
@@ -244,7 +254,7 @@ Below are the identified groups along with a brief description.
 	<img
 		width="500"
 			alt="Hard skills group 2"
-			src="figures\static\hard_skill_group\Group_2.png">
+			src="figures/static/hard_skill_group/Group_2.png">
 	</p>
 	</details>
 <details>
@@ -255,7 +265,7 @@ Below are the identified groups along with a brief description.
 	<img
 		width="500"
 			alt="Hard skills group 3"
-			src="figures\static\hard_skill_group\Group_3.png">
+			src="figures/static/hard_skill_group/Group_3.png">
 	</p>
 	</details>
 <details>
@@ -266,7 +276,7 @@ Below are the identified groups along with a brief description.
 	<img
 		width="500"
 			alt="Hard skills group 4"
-			src="figures\static\hard_skill_group\Group_4.png">
+			src="figures/static/hard_skill_group/Group_4.png">
 	</p>
 </details>
 
@@ -280,7 +290,7 @@ Below are the identified groups along with a brief description.
 	<img
 		width="500"
 			alt="Soft skills group 0"
-			src="figures\static\soft_skill_group\Soft_Skills_Group_0.png">
+			src="figures/static/soft_skill_group/Soft_Skills_Group_0.png">
 	</p>
 </details>
 <details>
@@ -291,7 +301,7 @@ Below are the identified groups along with a brief description.
 	<img
 		width="500"
 			alt="Soft skills group 1"
-			src="figures\static\soft_skill_group\Soft_Skills_Group_1.png">
+			src="figures/static/soft_skill_group/Soft_Skills_Group_1.png">
 	</p>
 	</details>
 <details>
@@ -302,7 +312,7 @@ Below are the identified groups along with a brief description.
 	<img
 		width="500"
 			alt="Soft skills group 2"
-			src="figures\static\soft_skill_group\Soft_Skills_Group_2.png">
+			src="figures/static/soft_skill_group/Soft_Skills_Group_2.png">
 	</p>
 	</details>
 <details>
@@ -313,7 +323,7 @@ Below are the identified groups along with a brief description.
 	<img
 		width="500"
 			alt="Soft skills group 3"
-			src="figures\static\soft_skill_group\Soft_Skills_Group_3.png">
+			src="figures/static/soft_skill_group/Soft_Skills_Group_3.png">
 	</p>
 	</details>
 <br />

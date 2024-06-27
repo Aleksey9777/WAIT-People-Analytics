@@ -73,7 +73,7 @@ def generate_top_unaware_stacked_bar_visual(
     """
     df = _get_skill_count(df, analytics_legend_mapping)
     df = df.sort_values(by=0, ascending=False)
-    return _get_bar_plot(df, analytics_legend_mapping, "Top by Count of Unconscious", top_n=8)
+    return _get_bar_plot(df, analytics_legend_mapping, "Top by Count of Unaware", top_n=8)
 
 
 def _get_skill_count(df: pd.DataFrame, mapping: dict[int, str]) -> pd.DataFrame:
