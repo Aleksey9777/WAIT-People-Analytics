@@ -26,12 +26,7 @@ def prepare_data_for_clustering(
         prepared dataframe
     """
     df = df[[*selected_columns]]
-    ids = df["ID"]
-    df = df.drop(columns="ID")
-    replaced = df.replace(clustering_skill_scaling)
-    replaced.insert(0, "ID", "")
-    replaced["ID"] = ids
-    return replaced
+    return _get_scaled_df(df, clustering_skill_scaling)
 
 
 def generate_hierarchical_clustering_visual(
@@ -45,6 +40,7 @@ def generate_hierarchical_clustering_visual(
     Args:
         df: dataframe
         hierarchical_params: params for hierarchical clustering (distance_threshold and n_clusters are overwritten)
+        color_threshold: chosen threshold for coloring clusters
     Returns:
         prepared dataframe
     """
@@ -86,6 +82,7 @@ def generate_hierarchical_clustering_visual(
 def generate_hierarchical_table(
     df: pd.DataFrame,
     hierarchical_params: dict[str, Any],
+    clustering_skill_scaling: dict[int, int],
 ) -> pd.DataFrame:
     """
     Group people with hierarchical clustering
@@ -93,6 +90,7 @@ def generate_hierarchical_table(
     Args:
         df: dataframe
         hierarchical_params: params for hierarchical clustering
+        clustering_skill_scaling: used to untranslate skill scaling
     Returns:
         dataframe with groups
     """
@@ -101,6 +99,12 @@ def generate_hierarchical_table(
 
     ac = AgglomerativeClustering(**hierarchical_params)
     clustering = ac.fit(df)
+
+    reverse_clustering_skill_scaling = {
+        value: key
+        for key, value in clustering_skill_scaling.items()
+    }
+    df_copy = _get_scaled_df(df_copy, reverse_clustering_skill_scaling)
 
     df_copy.insert(1, "group", "")
     df_copy["group"] = clustering.labels_
@@ -162,7 +166,8 @@ def generate_heatmap(
     clustering_skill_scaling: dict[int, int],
 ) -> Any:
     """
-    Generate heatmap to quickly distinguish groups
+    Generate heatmap to quickly distinguish groups.
+    This heatmap should not be used for business purposes
 
     Args:
         df: dataframe
@@ -182,3 +187,12 @@ def generate_heatmap(
     plt.title("Heatmap")
     plt.tight_layout()
     return plt
+
+
+def _get_scaled_df(df: pd.DataFrame, skill_scaling: dict[float, float]) -> pd.DataFrame:
+    ids = df["ID"]
+    df = df.drop(columns="ID")
+    replaced = df.replace(skill_scaling)
+    replaced.insert(0, "ID", "")
+    replaced["ID"] = ids
+    return replaced
